@@ -4,12 +4,12 @@ import "firebase/firestore";
 // Your web app's Firebase configuration
 require("firebase/firestore");
 const firebaseConfig = {
-  apiKey: "AIzaSyAgROKOsZuQD8JvbLFyu0K5PhLjyf1TWa0",
-  authDomain: "store-5067d.firebaseapp.com",
-  projectId: "store-5067d",
-  storageBucket: "store-5067d.appspot.com",
-  messagingSenderId: "43030515564",
-  appId: "1:43030515564:web:9e236cede3b9f71b9ced49",
+  apiKey: "AIzaSyAVlB_kBRth2I-H7t5FzbxnuttsLVujI08",
+  authDomain: "todo-9a634.firebaseapp.com",
+  projectId: "todo-9a634",
+  storageBucket: "todo-9a634.appspot.com",
+  messagingSenderId: "805499520554",
+  appId: "1:805499520554:web:b218181a7fe33d3fd92553",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

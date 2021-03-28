@@ -11,9 +11,16 @@
     "@types/react-redux": "^7.1.16",
     "@types/redux": "^3.6.0",
     "@types/redux-thunk": "^2.1.0",
+    "firebase": "^8.3.1",
+    "firestore": "^1.1.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-redux": "^7.2.3",
     "react-scripts": "4.0.3",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "typescript": "^4.2.3",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
