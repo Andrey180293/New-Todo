@@ -24,6 +24,12 @@ export default function AddTaskModal({ setData, data }) {
     OnchangeInputValue(e.target.value);
   };
 
+  const itemId = (arr) => {
+    const arrId = [...arr].map((el) => el.id);
+    console.log(isNaN(Math.max(...arrId)));
+    return isNaN(Math.max(...arrId)) ? 0 : Math.max(...arrId) + 1;
+  };
+
   const addData = (item) => {
     setOpen(false);
     setData(item);
@@ -111,7 +117,7 @@ export default function AddTaskModal({ setData, data }) {
               addData({
                 text: inputValue,
                 color: color,
-                count: data.length + 1,
+                id: itemId(data),
               });
             }}
             color="primary"

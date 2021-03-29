@@ -27,6 +27,7 @@ export const setData = (item) => {
       name: item.text,
       arr: [],
       color: item.color,
+      id: item.id,
     });
 
     dispatch(getData());
@@ -48,14 +49,61 @@ export const deleteDataItem = (item) => {
   };
 };
 
-export const setCompleteItem = (checked, item) => {
+export const setCompleteItem = (checked, item, el) => {
   return async (dispatch) => {
-    console.log(`${item}`);
+    console.log([...item.arr]);
     let updateStore = db
       .collection("store")
-      .doc(`${item}`)
+      .doc(`${item.name}`)
       .update({
-        arr: [...arr, (arr[0] = { ...arr[0], complete: checked })],
+        ...item,
+        arr: [
+          ...item.arr.map((f) =>
+            f.id === el.id ? { ...el, complete: checked } : f
+          ),
+        ],
+      });
+    await updateStore
+      .then(() => {
+        console.log("Document successfully updating!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+    dispatch(getData());
+  };
+};
+
+export const setTextFieldItem = (item, el) => {
+  return async (dispatch) => {
+    //console.log([...item.arr]);
+    let updateStore = db
+      .collection("store")
+      .doc(`${item.name}`)
+      .update({
+        ...item,
+        arr: [...item.arr, el],
+      });
+    await updateStore
+      .then(() => {
+        console.log("Document successfully updating!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+    dispatch(getData());
+  };
+};
+
+export const removeTextFieldItem = (item, el) => {
+  return async (dispatch) => {
+    //console.log([...item.arr]);
+    let updateStore = db
+      .collection("store")
+      .doc(`${item.name}`)
+      .update({
+        ...item,
+        arr: [...item.arr.filter((f) => f.id !== el.id)],
       });
     await updateStore
       .then(() => {

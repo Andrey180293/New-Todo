@@ -15,10 +15,9 @@ function Sidebar_Container({ data, setActiveItem, setData, deleteDataItem }) {
     setActiveItem(num);
     setActiveLink(num);
   };
-  console.log(data);
   return (
     <Sidebar
-      data={data}
+      data={data.sort((a, b) => a.id - b.id)}
       setActive={setActive}
       activeLink={activeLink}
       setData={setData}

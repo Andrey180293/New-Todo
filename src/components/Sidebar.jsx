@@ -19,6 +19,7 @@ export default function Sidebar({
   setData,
   deleteDataItem,
 }) {
+  console.log(data);
   const classes = useStyles();
   if (data.length <= 0) return "00000";
   return (

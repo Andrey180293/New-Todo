@@ -4,11 +4,17 @@ import AddTextFields from "./AddTextFields";
 import { Button } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import ListItem from "@material-ui/core/ListItem";
-const TaskField = ({ data, activeItem, setCompleteItem }) => {
+const TaskField = ({
+  data,
+  activeItem,
+  setCompleteItem,
+  setTextFieldItem,
+  removeTextFieldItem,
+}) => {
   const [checked, setChecked] = useState(false);
-  const handleChange = (check, item) => {
+  const handleChange = (check, item, el) => {
     setChecked(check);
-    setCompleteItem(check, item);
+    setCompleteItem(check, item, el);
   };
   const [isActiveTextField, setActiveTextField] = useState(false);
   const [isActiveTextLink, setActiveTextLink] = useState(null);
@@ -40,7 +46,9 @@ const TaskField = ({ data, activeItem, setCompleteItem }) => {
               >
                 <Checkbox
                   checked={item.complete}
-                  onChange={() => handleChange(!checked, data[activeItem].name)}
+                  onChange={() =>
+                    handleChange(!checked, data[activeItem], item)
+                  }
                   inputProps={{ "aria-label": "primary checkbox" }}
                 />
                 <p
@@ -53,7 +61,10 @@ const TaskField = ({ data, activeItem, setCompleteItem }) => {
                   {item.text}
                 </p>
                 {isActiveTextLink === key && (
-                  <CloseIcon style={{ float: "right" }} />
+                  <CloseIcon
+                    style={{ float: "right" }}
+                    onClick={() => removeTextFieldItem(data[activeItem], item)}
+                  />
                 )}
               </div>
             );
@@ -70,8 +81,11 @@ const TaskField = ({ data, activeItem, setCompleteItem }) => {
         </Button>
       ) : (
         <AddTextFields
+          setTextFieldItem={setTextFieldItem}
           isActiveTextField={isActiveTextField}
           setActiveTextField={setActiveTextField}
+          dataAactiveItem={data[activeItem]}
+          setTextFieldItem={setTextFieldItem}
         />
       )}
     </div>
