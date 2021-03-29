@@ -27,6 +27,7 @@ export default function AddTaskModal({ setData, data }) {
   const addData = (item) => {
     setOpen(false);
     setData(item);
+    OnchangeInputValue("");
   };
   return (
     <div>
@@ -89,9 +90,10 @@ export default function AddTaskModal({ setData, data }) {
           <TextField
             autoFocus
             margin="dense"
-            id="name"
+            id="standard-basic"
             label="Add your task please"
             type="text"
+            autoComplete="off"
             value={inputValue}
             onChange={(e) => {
               Onchange(e);
@@ -104,6 +106,7 @@ export default function AddTaskModal({ setData, data }) {
             Cancel
           </Button>
           <Button
+            disabled={inputValue === "" ? true : false}
             onClick={() => {
               addData({
                 text: inputValue,

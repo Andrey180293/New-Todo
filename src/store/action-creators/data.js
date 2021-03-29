@@ -1,6 +1,6 @@
 import { db, auth } from "../../servises/firebase";
 
-export const GET_DATA = "SET_DATA";
+export const GET_DATA = "GET_DATA";
 export const SET_ACTIVE_ITEM = "SET_ACTIVE_ITEM";
 
 export const getData = () => {
@@ -35,10 +35,31 @@ export const setData = (item) => {
 
 export const deleteDataItem = (item) => {
   return async (dispatch) => {
-    let setStore = db.collection("cities").doc(`${item}`).delete();
+    console.log(`${item}`);
+    let setStore = db.collection("store").doc(`${item}`).delete();
     await setStore
       .then(() => {
         console.log("Document successfully deleted!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+    dispatch(getData());
+  };
+};
+
+export const setCompleteItem = (checked, item) => {
+  return async (dispatch) => {
+    console.log(`${item}`);
+    let updateStore = db
+      .collection("store")
+      .doc(`${item}`)
+      .update({
+        arr: [...arr, (arr[0] = { ...arr[0], complete: checked })],
+      });
+    await updateStore
+      .then(() => {
+        console.log("Document successfully updating!");
       })
       .catch((error) => {
         console.error("Error removing document: ", error);

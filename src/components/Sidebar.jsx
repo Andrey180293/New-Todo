@@ -38,7 +38,8 @@ export default function Sidebar({
                 button
                 style={{
                   backgroundColor: activeLink === key && "#1976d2",
-                  textDecorationLine: strikethrough && "line-through",
+                  textDecorationLine:
+                    strikethrough && el.arr.length > 0 && "line-through",
                 }}
                 onClick={() => setActive(key)}
               >
