@@ -21,7 +21,7 @@ export default function Sidebar({
 }) {
   console.log(data);
   const classes = useStyles();
-  if (data.length <= 0) return "00000";
+  if (data.length <= 0) return <AddTaskModal setData={setData} data={data} />;
   return (
     <>
       <List

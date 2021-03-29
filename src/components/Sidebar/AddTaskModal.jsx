@@ -27,7 +27,7 @@ export default function AddTaskModal({ setData, data }) {
   const itemId = (arr) => {
     const arrId = [...arr].map((el) => el.id);
     console.log(isNaN(Math.max(...arrId)));
-    return isNaN(Math.max(...arrId)) ? 0 : Math.max(...arrId) + 1;
+    return arr.length === 0 ? 0 : Math.max(...arrId) + 1;
   };
 
   const addData = (item) => {

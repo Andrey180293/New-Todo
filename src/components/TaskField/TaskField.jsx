@@ -3,7 +3,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 import AddTextFields from "./AddTextFields";
 import { Button } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import ListItem from "@material-ui/core/ListItem";
 const TaskField = ({
   data,
   activeItem,
@@ -42,7 +41,8 @@ const TaskField = ({
                   backgroundColor: isActiveTextLink === key && "#f44336",
                   cursor: "pointer",
                 }}
-                onClick={() => setActiveTextLink(key)}
+                onMouseEnter={() => setActiveTextLink(key)}
+                onMouseLeave={() => setActiveTextLink(null)}
               >
                 <Checkbox
                   checked={item.complete}
